@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "gulp watch",
-    "dist": "gulp clean && gulp dist"
+    "start": "gulp clean && gulp watch"
   },
   "repository": {
     "type": "git",

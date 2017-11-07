@@ -15,21 +15,34 @@ var pngquant = require('imagemin-pngquant')
 var autoprefixer = require('gulp-autoprefixer')
 
 gulp.task('minLess', function() {
-  gulp.src('src/less/*.less')
-  .pipe(watch('src/less/*.less'))
+  gulp.src('src/css/**/*.less')
   .pipe(less())
-  .pipe(gulp.dest('src/css'))
+  .pipe(concat('index.css'))
+  .pipe(autoprefixer({
+    browsers: ['last 2 versions', 'Android >= 4.0'],
+    cascade: false // 是否美化css
+  }))
+  .pipe(rename({suffix: '.min'}))
+  .pipe(minifyCss())
+  .pipe(gulp.dest('dist/css'))
 })
 
 gulp.task('minSass', function() {
-  gulp.src('src/scss/*.scss')
-  .pipe(watch('src/scss/*.scss'))
+  gulp.src('src/css/**/*.scss')
   .pipe(sass())
-  .pipe(gulp.dest('src/css'))
+  .pipe(concat('index.css'))
+  .pipe(autoprefixer({
+    browsers: ['last 2 versions', 'Android >= 4.0'],
+    cascade: false // 是否美化css
+  }))
+  .pipe(rename({suffix: '.min'}))
+  .pipe(minifyCss())
+  .pipe(gulp.dest('dist/css'))
 })
 
 gulp.task('minCss', function() {
-  gulp.src('src/css/*.css')
+  gulp.src('src/css/**/*.css')
+  .pipe(concat('index.css'))
   .pipe(autoprefixer({
     browsers: ['last 2 versions', 'Android >= 4.0'],
     cascade: false // 是否美化css
@@ -40,7 +53,7 @@ gulp.task('minCss', function() {
 })
 
 gulp.task('minifyjs', function() {
-  gulp.src(['src/js/*.js'])
+  gulp.src(['src/js/**/*.js'])
   .pipe(concat('index.js'))
   .pipe(rename({suffix: '.min'}))
   .pipe(uglify())
@@ -59,13 +72,13 @@ gulp.task('minHtml', function() {
     minifyCSS: true     // 压缩页面CSS
   }
 
-  gulp.src('src/html/*.html')
+  gulp.src('src/**/*.html')
   .pipe(htmlmin(options))
-  .pipe(gulp.dest('dist/html'))
+  .pipe(gulp.dest('dist'))
 })
 
 gulp.task('clean', function() {
-  del(['./dist'])
+  del(['./dist/*'])
   // return gulp.src('./dist', {
   //   read: false
   // }).pipe(clean())
@@ -81,9 +94,6 @@ gulp.task('minImg', function() {
   .pipe(gulp.dest('dist/img'));
 })
 
-gulp.task('watch', function() {
-  gulp.watch('src/css/*', ['minifyCss'])
+gulp.task('watch', ['minLess', 'minSass', 'minCss', 'minifyjs', 'minHtml', 'minImg'], function () {
+	gulp.watch(['new/css/*.less','new/*.html', 'new/js/*.js','new/img/**/*'], ['less', 'js', 'css', 'htmlmin','images']);
 })
-
-
-gulp.task('default', ['minLess', 'minSass'])
