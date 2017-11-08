@@ -5,6 +5,5 @@ onload = function() {
     return b + c
   }
 
-  document.write(a)
   console.log(a);
 }
