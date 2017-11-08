@@ -11,16 +11,20 @@ var clean = require('gulp-clean')
 var del = require('del')
 var imagemin = require('gulp-imagemin')
 var cache = require('gulp-cache')
+var rev = require('gulp-rev')
+var plumber = require('gulp-plumber')
+var babel = require('gulp-babel')
 var pngquant = require('imagemin-pngquant')
 var autoprefixer = require('gulp-autoprefixer')
 
 gulp.task('minLess', function() {
   gulp.src('src/css/**/*.less')
+  .pipe(plumber())
   .pipe(less())
   .pipe(concat('index.css'))
   .pipe(autoprefixer({
-    browsers: ['last 2 versions', 'Android >= 4.0'],
-    cascade: false // 是否美化css
+    browsers: ['last 2 versions', 'Android >= 4.2'],
+    cascade: false
   }))
   .pipe(rename({suffix: '.min'}))
   .pipe(minifyCss())
@@ -29,11 +33,12 @@ gulp.task('minLess', function() {
 
 gulp.task('minSass', function() {
   gulp.src('src/css/**/*.scss')
+  .pipe(plumber())
   .pipe(sass())
   .pipe(concat('index.css'))
   .pipe(autoprefixer({
-    browsers: ['last 2 versions', 'Android >= 4.0'],
-    cascade: false // 是否美化css
+    browsers: ['last 2 versions', 'Android >= 4.2'],
+    cascade: false
   }))
   .pipe(rename({suffix: '.min'}))
   .pipe(minifyCss())
@@ -42,6 +47,7 @@ gulp.task('minSass', function() {
 
 gulp.task('minCss', function() {
   gulp.src('src/css/**/*.css')
+  .pipe(plumber())
   .pipe(concat('index.css'))
   .pipe(autoprefixer({
     browsers: ['last 2 versions', 'Android >= 4.0'],
@@ -54,6 +60,8 @@ gulp.task('minCss', function() {
 
 gulp.task('minifyjs', function() {
   gulp.src(['src/js/**/*.js'])
+  .pipe(babel({ presets: ['es2015'] }))
+  .pipe(plumber())
   .pipe(concat('index.js'))
   .pipe(rename({suffix: '.min'}))
   .pipe(uglify())
@@ -73,27 +81,23 @@ gulp.task('minHtml', function() {
   }
 
   gulp.src('src/**/*.html')
+  .pipe(plumber())
   .pipe(htmlmin(options))
   .pipe(gulp.dest('dist'))
 })
 
 gulp.task('clean', function() {
   del(['./dist/*'])
-  // return gulp.src('./dist', {
-  //   read: false
-  // }).pipe(clean())
 })
 
-gulp.task('minImg', function() {
-  gulp.src('src/img/*.{png,jpg,gif,ico}')
-  .pipe(cache(imagemin({
-      progressive: true,
-      svgoPlugins: [{removeViewBox: false}],
-      use: [pngquant()]
-  })))
-  .pipe(gulp.dest('dist/img'));
+gulp.task('minImg', function () {
+  gulp.src('src/img/*')
+  .pipe(gulp.dest('dist/img'))
 })
 
-gulp.task('watch', ['minLess', 'minSass', 'minCss', 'minifyjs', 'minHtml', 'minImg'], function () {
-	gulp.watch(['new/css/*.less','new/*.html', 'new/js/*.js','new/img/**/*'], ['less', 'js', 'css', 'htmlmin','images']);
+gulp.task('watch', function () {
+	gulp.watch(['src/css/**/*.less', 'src/css/**/*.scss', 'src/css/**/*.css', 'src/js/**/*.js'],
+  ['minLess', 'minSass', 'minCss', 'minifyjs'])
 })
+
+gulp.task('dist', ['minLess', 'minSass', 'minCss', 'minifyjs', 'babel', 'minHtml', 'minImg'])

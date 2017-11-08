@@ -1,0 +1,47 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\wangqinghong\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'start' ]
+2 info using npm@3.10.10
+3 info using node@v6.11.2
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info lifecycle xui@1.0.0~prestart: xui@1.0.0
+6 silly lifecycle xui@1.0.0~prestart: no script for prestart, continuing
+7 info lifecycle xui@1.0.0~start: xui@1.0.0
+8 verbose lifecycle xui@1.0.0~start: unsafe-perm in lifecycle true
+9 verbose lifecycle xui@1.0.0~start: PATH: C:\Users\wangqinghong\AppData\Roaming\npm\node_modules\npm\bin\node-gyp-bin;F:\projects\MY-PROJECT\git-repos\XUI\node_modules\.bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\TortoiseSVN\bin;F:\environment\git\Git\cmd;F:\environment\git\Git\mingw32\bin;F:\environment\git\Git\usr\bin;E:\development\nginx\nginx-1.10.1;C:\Program Files\nodejs\;C:\Users\wangqinghong\AppData\Local\atom\bin;C:\Go\bin;C:\Users\wangqinghong\AppData\Roaming\npm
+10 verbose lifecycle xui@1.0.0~start: CWD: F:\projects\MY-PROJECT\git-repos\XUI
+11 silly lifecycle xui@1.0.0~start: Args: [ '/d /s /c', 'gulp clean && gulp dist && gulp watch' ]
+12 silly lifecycle xui@1.0.0~start: Returned: code: 1  signal: null
+13 info lifecycle xui@1.0.0~start: Failed to exec start script
+14 verbose stack Error: xui@1.0.0 start: `gulp clean && gulp dist && gulp watch`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (C:\Users\wangqinghong\AppData\Roaming\npm\node_modules\npm\lib\utils\lifecycle.js:255:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
+14 verbose stack     at ChildProcess.<anonymous> (C:\Users\wangqinghong\AppData\Roaming\npm\node_modules\npm\lib\utils\spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at maybeClose (internal/child_process.js:891:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+15 verbose pkgid xui@1.0.0
+16 verbose cwd F:\projects\MY-PROJECT\git-repos\XUI\src
+17 error Windows_NT 6.1.7601
+18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\wangqinghong\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "start"
+19 error node v6.11.2
+20 error npm  v3.10.10
+21 error code ELIFECYCLE
+22 error xui@1.0.0 start: `gulp clean && gulp dist && gulp watch`
+22 error Exit status 1
+23 error Failed at the xui@1.0.0 start script 'gulp clean && gulp dist && gulp watch'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the xui package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     gulp clean && gulp dist && gulp watch
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs xui
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls xui
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
