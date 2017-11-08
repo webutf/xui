@@ -30,7 +30,7 @@ var autoprefixer = require('gulp-autoprefixer')
 // })
 
 gulp.task('minSass', function() {
-  gulp.src('src/scss/*.scss')
+  gulp.src('src/scss/index.scss')
   .pipe(plumber())
   .pipe(sass())
   .pipe(concat('index.css'))

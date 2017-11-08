@@ -1,0 +1,21 @@
+.x-header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: $headerHeight;
+  line-height: $headerHeight;
+  text-align: center;
+  background: $primary;
+  color: $colorWhite;
+  z-index: $zIndexHeader;
+  .x-left, .x-right {
+    height: $headerHeight;
+  }
+  .x-left {
+    float: left;
+  }
+  .x-right {
+    float: right;
+  }
+}
