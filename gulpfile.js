@@ -13,7 +13,6 @@ var imagemin = require('gulp-imagemin')
 var cache = require('gulp-cache')
 var rev = require('gulp-rev')
 var plumber = require('gulp-plumber')
-var babel = require('gulp-babel')
 var pngquant = require('imagemin-pngquant')
 var autoprefixer = require('gulp-autoprefixer')
 
@@ -60,7 +59,6 @@ gulp.task('minCss', function() {
 
 gulp.task('minifyjs', function() {
   gulp.src(['src/js/**/*.js'])
-  .pipe(babel({ presets: ['es2015'] }))
   .pipe(plumber())
   .pipe(concat('index.js'))
   .pipe(rename({suffix: '.min'}))
@@ -79,7 +77,6 @@ gulp.task('minHtml', function() {
     minifyJS: true,     //压缩页面JS
     minifyCSS: true     // 压缩页面CSS
   }
-
   gulp.src('src/**/*.html')
   .pipe(plumber())
   .pipe(htmlmin(options))
@@ -95,9 +92,9 @@ gulp.task('minImg', function () {
   .pipe(gulp.dest('dist/img'))
 })
 
-gulp.task('watch', function () {
+gulp.task('watch',['minLess', 'minSass', 'minCss', 'minifyjs'], function () {
 	gulp.watch(['src/css/**/*.less', 'src/css/**/*.scss', 'src/css/**/*.css', 'src/js/**/*.js'],
   ['minLess', 'minSass', 'minCss', 'minifyjs'])
 })
 
-gulp.task('dist', ['minLess', 'minSass', 'minCss', 'minifyjs', 'babel', 'minHtml', 'minImg'])
+gulp.task('dist', ['minLess', 'minSass', 'minCss', 'minifyjs', 'minHtml', 'minImg'])

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "gulp clean && gulp dist && gulp watch",
+    "start": "gulp clean && gulp watch",
     "dist": "gulp clean && gulp dist"
   },
   "repository": {
@@ -18,12 +18,9 @@
   },
   "homepage": "https://github.com/xiaotaishuai/XUI#readme",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
-    "gulp-babel": "^7.0.0",
     "gulp-cache": "^1.0.1",
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.1",
