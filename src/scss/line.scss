@@ -1,10 +1,41 @@
 .x-line {
   li {
-    height: 44px;
+    height: $headerHeight - 4;
+    line-height: $headerHeight - 14;
     padding: 5px 10px;
     border-bottom: 1px solid #dbdbdb;
     &:last-child {
       border: none;
+    }
+  }
+}
+.x-line-select {
+  li {
+    padding-right: $headerHeight - 10;
+    position: relative;
+    &.active:after {
+      content: '\e637';
+      font-family: iconfont!important;
+      -webkit-font-smoothing: antialiased;
+      color: $primary;
+      position: absolute;
+      right: 12px;
+    }
+  }
+}
+.x-line-multi-select {
+  li {
+    &:before {
+      content: '\e720';
+      font-family: iconfont!important;
+      -webkit-font-smoothing: antialiased;
+      color: $primary;
+      vertical-align: bottom;
+      font-size: 24px;
+      margin-right: 4px;
+    }
+    &.active:before {
+      content: '\e721';
     }
   }
 }

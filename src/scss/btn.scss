@@ -31,9 +31,8 @@
   background: #c9302c;
 }
 .btn-small {
-  font-size: 14px;
-  height: $headerHeight - 14;
-  line-height: $headerHeight - 14;
+  height: $headerHeight - 10;
+  line-height: $headerHeight - 10;
 }
 .btn-primary[disabled], .btn-warning[disabled], .btn-danger[disabled] {
   opacity: 0.6;

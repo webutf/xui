@@ -11,7 +11,6 @@
   .header-left, .header-right {
     width: $headerHeight;
     height: $headerHeight;
-    font-size: 14px;
   }
   .header-left {
     float: left;
@@ -27,7 +26,7 @@
     overflow: hidden;
     white-space: nowrap;
     span {
-      padding: 4px 15px;
+      padding: 6px 20px;
       background: rgba(0, 0, 0, 0.2);
     }
     span:nth-child(1) {
@@ -43,5 +42,8 @@
   }
   .mix {
     width: $headerHeight + 14;
+    .iconfont {
+      font-size: 16px;
+    }
   }
 }

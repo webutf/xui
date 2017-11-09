@@ -12,8 +12,8 @@
 }
 .x-nav-header {
   top: 44px;
-  height: 34px;
-  line-height: 34px;
+  height: $headerHeight - 4;
+  line-height: $headerHeight - 4;
   border-bottom: 1px solid #dbdbdb;
   li {
     font-size: 14px;
@@ -25,7 +25,7 @@
 .x-nav-footer {
   bottom: 0;
   background: #dfdfdf;
-  height: $headerHeight + 4;
+  height: $headerHeight + 6;
   align-items: center;
   .iconfont {
     font-size: 24px;
@@ -46,9 +46,9 @@
   }
   .text {
     width: auto;
-    height: 12px;
-    font-size: 10px;
-    line-height: 12px;
+    height: 14px;
+    font-size: 12px;
+    line-height: 14px;
     color: $colorWhite;
   }
   .active {
