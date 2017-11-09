@@ -1,0 +1,10 @@
+.x-line {
+  li {
+    height: 44px;
+    padding: 5px 10px;
+    border-bottom: 1px solid #dbdbdb;
+    &:last-child {
+      border: none;
+    }
+  }
+}
