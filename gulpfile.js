@@ -40,8 +40,8 @@ gulp.task('minSass', function() {
   }))
   .pipe(rename({suffix: '.min'}))
   .pipe(minifyCss())
-  .pipe(gulp.dest('src/css'))
-  .pipe(gulp.dest('dist/css'))
+  .pipe(gulp.dest('src/assets'))
+  .pipe(gulp.dest('dist/assets'))
 })
 
 // gulp.task('minCss', function() {
@@ -63,8 +63,8 @@ gulp.task('minifyjs', function() {
   .pipe(concat('index.js'))
   .pipe(rename({suffix: '.min'}))
   .pipe(uglify())
-  .pipe(gulp.dest('src/css'))
-  .pipe(gulp.dest('dist/css'))
+  .pipe(gulp.dest('src/assets'))
+  .pipe(gulp.dest('dist/assets'))
 })
 
 gulp.task('minHtml', function() {
@@ -93,9 +93,14 @@ gulp.task('minImg', function () {
   .pipe(gulp.dest('dist/img'))
 })
 
+gulp.task('iconfont', function() {
+  gulp.src('src/fonts/*')
+  .pipe(gulp.dest('dist/font'))
+})
+
 gulp.task('watch',['minSass', 'minifyjs'], function () {
 	gulp.watch(['src/scss/**/*.scss', 'src/js/**/*.js'],
   ['minSass', 'minifyjs'])
 })
 
-gulp.task('dist', ['minSass', 'minifyjs', 'minHtml', 'minImg'])
+gulp.task('dist', ['minSass', 'minifyjs', 'minHtml', 'minImg', 'iconfont'])
