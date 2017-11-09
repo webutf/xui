@@ -2,3 +2,11 @@ $headerHeight:  44px;
 $primary: #007aff;
 $colorWhite: #fff;
 $zIndexHeader: 9999;
+$bgPrimary: #007aff;
+$bgWarning: #f0ad4e;
+$bgDanger: #d9534f;
+
+.page {
+  width: 100%;
+  padding-top: $headerHeight;
+}

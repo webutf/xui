@@ -1,21 +1,47 @@
 .x-header {
   position: fixed;
-  left: 0;
+  width: 100%;
   top: 0;
-  right: 0;
   height: $headerHeight;
   line-height: $headerHeight;
   text-align: center;
   background: $primary;
   color: $colorWhite;
   z-index: $zIndexHeader;
-  .x-left, .x-right {
+  .header-left, .header-right {
+    width: $headerHeight;
     height: $headerHeight;
+    font-size: 14px;
   }
-  .x-left {
+  .header-left {
     float: left;
   }
-  .x-right {
+  .header-right {
     float: right;
+  }
+  h1 {
+    position: absolute;
+    left: $headerHeight * 1.5;
+    right: $headerHeight * 1.5;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    span {
+      padding: 4px 15px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+    span:nth-child(1) {
+      border-radius: 5px 0 0 5px;
+    }
+    span:nth-child(2) {
+      border-radius: 0 5px 5px 0;
+    }
+    .active {
+      color: $primary;
+      background: $colorWhite;
+    }
+  }
+  .mix {
+    width: $headerHeight + 14;
   }
 }

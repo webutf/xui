@@ -7,13 +7,14 @@ address, form, button, ul, li, ol, main, summary, img {
 html {
   font-family: 'Microsoft Yahei',"sans-serif";
   color: #333;
+  height: 100%;
 }
 body, figure, p, ul, ol, menu, dd {
   margin: 0;
 }
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
-  font-weight:bold;
+  font-weight:normal;
   font-size:100%;
 }
 img {
@@ -48,37 +49,6 @@ pre {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-.btn-default {
-  border: 1px solid #ccc;
-  background: #fff;
-  color: #333;
-}
-.btn-default:hover, .btn-default:focus {
-  background: #e6e6e6;
-  border: 1px solid #adadad;
-}
-.btn-warning {
-  background: #f0ad4e;
-  border: 1px solid #eea236;
-}
-.btn-warning:hover, .btn-warning:focus {
-  background: #ec971f;
-  border: 1px solid #d58512;
-}
-.btn-danger {
-  background: #d9534f;
-  border-color: 1px solid #d43f3a;
-}
-.btn-danger:hover, .btn-danger:focus {
-  background: #c9302c;
-  border: 1px solid #ac2925;
-}
-.btn-danger[disabled]:hover, .btn-warning[disabled]:hover,
-button[disabled]:hover, .btn-default[disabled]:hover {
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
 .border-radius0 {
   border-radius: 0;
 }

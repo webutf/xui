@@ -1,7 +1,12 @@
 @import './reset.scss';
+@import './iconfont.scss';
 @import './global.scss';
 @import './header.scss';
 @import './btn.scss';
+@import './nav.scss';
+html {
+  height: 100%;
+}
 body {
-
+  min-height: 100%;
 }
