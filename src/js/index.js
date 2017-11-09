@@ -1,9 +1,9 @@
-onload = function() {
-  var a = function() {
-    var b = 10
-    var c = 30
-    return b + c
-  }
+$(function() {
+  $('.open-actionsheet').on('click', function() {
+		$('.x-actionsheet').show()
+	})
 
-  console.log(a);
-}
+	$('.close-actionsheet, .x-actionsheet li').on('click', function() {
+		$('.x-actionsheet').hide()
+	})
+})
