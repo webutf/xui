@@ -3,6 +3,7 @@
     height: $headerHeight;
     line-height: $headerHeight - 10;
     padding: 5px 10px;
+    position: relative;
     border-bottom: 1px solid #dbdbdb;
     &:last-child {
       border: none;
@@ -15,7 +16,6 @@
 .x-line-select {
   li {
     padding-right: $headerHeight - 10;
-    position: relative;
     &.active:after {
       content: '\e637';
       font-family: iconfont!important;
@@ -46,7 +46,6 @@
 .x-line-right {
   li {
     padding-right: $headerHeight - 10;
-    position: relative;
     &:after {
       content: '\e601';
       font-family: iconfont!important;
@@ -58,4 +57,43 @@
       right: 12px;
     }
   }
+}
+
+.x-switch, .x-switch:before {
+  height: 30px;
+  width: 50px;
+  border-radius: 15px;
+  z-index: 10;
+}
+.x-switch {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #ccc;
+  overflow: hidden;
+}
+.x-switch:before {
+  content: "";
+  position: absolute;
+  left: -50px;
+  background-color: #099FDE;
+  transition: left 0.2s ease 0s;
+}
+.x-switch:after {
+  content: "";
+  height: 26px;
+  width: 26px;
+  background-color: #fff;
+  border-radius: 15px;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  transition: left 0.2s ease 0s;
+  z-index: 13;
+}
+.x-switch.active:before {
+  left: 0;
+}
+.x-switch.active:after {
+  left: 22px;
 }

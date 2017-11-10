@@ -1,0 +1,29 @@
+.row {
+  width: 100%;
+  overflow: hidden;
+  .col-1, .col-2, .col-3, .col-4 {
+    float: left;
+    overflow: hidden;
+  }
+  .col-1 {
+    width: 25%;
+  }
+  .col-2 {
+    width: 50%;
+  }
+  .col-3 {
+    width: 75%;
+  }
+  .col-4 {
+    width: 100%;
+  }
+  .col-offset-1 {
+    margin-left: 25%;
+  }
+  .col-offset-2 {
+    margin-left: 50%;
+  }
+  .col-offset-3 {
+    margin-left: 75%;
+  }
+}
