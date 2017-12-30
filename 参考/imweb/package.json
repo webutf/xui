@@ -1,0 +1,40 @@
+{
+  "name": "sheral",
+  "version": "1.0.0",
+  "description": "Focus in mobile UI.",
+  "dependencies": {
+    "sass-sandal": "^3.3.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-connect": "^5.0.0",
+    "gulp-sass": "^3.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/imweb/sheral.git"
+  },
+  "keywords": [
+    "sass",
+    "scss",
+    "sheral",
+    "mobile ui",
+    "sass library"
+  ],
+  "author": "结一 <xuyc_brother@foxmail.com> (https://github.com/marvin1023)",
+  "maintainers": [
+    "结一 <xuyc_brother@foxmail.com>"
+  ],
+  "contributors": [
+    "结一 <xuyc_brother@foxmail.com> (https://github.com/marvin1023)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/imweb/sheral/issues"
+  },
+  "homepage": "https://github.com/imweb/sheral"
+}
