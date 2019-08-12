@@ -1,0 +1,25 @@
+<!doctype html> <html> <head> <meta charset=UTF-8> <title>XUI框架</title> <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"/> <meta name=keywords content=XUI框架 /> <meta name=description content=XUI框架 /> <meta name=renderer content=webkit> <meta name=viewport content="width=device-width,initial-scale=1,user-scalable=no"/> <link rel="shortcut icon" href=../assets/favicon.ico> <link href="../css/views/prompt.8f77cea2.css?c2811d67a4f463050f7a" rel="stylesheet"></head> <body> <h2 class="font-size24 color-blue mb-20">prompt 输入</h2> <p class=mb-20>最简单使用方法: xui.prompt('请输入内容', '提示')</p> <button class="btn btn-primary mr-20">Prompt</button> <button class="btn btn-default mr-20">50</button> <pre>
+      xui.prompt('请输入内容', '提示', {
+        showCancelButton: false,		//是否显示取消按钮
+        cancelButtonText: '取消',		//取消按钮文本
+        confirmButtonText: '确定', 	//确定按钮的文本
+        cancelButtonClass: '',			//取消按钮的自定义类名
+        confirmButtonClass: '',			//确定按钮的自定义类名
+        closeOnClickModal: true,		//是否可通过点击遮罩关闭弹框
+        inputClass: 'positiveNumber',		//输入框添加类名
+        maxLength: 6,							//输入框限制多少位(默认10000)
+        inputValue: 50,							//输入框内容
+        placeholder: '请输入大于10的数字',	//输入框placeholder
+        valid(val) {						//如果输入内容不合法, 需要 return false
+          if (val &lt;= 10) {
+            xui.toast('请输入大于10的数字')
+            return false
+          }
+        },
+        callback(n) {
+
+        }
+      })
+		</pre> <pre>
+      代码见 alert
+		</pre> <script src=https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js></script> <script type="text/javascript" src="../js/views/prompt.c2811d67.js?c2811d67a4f463050f7a"></script></body> </html> 

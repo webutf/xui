@@ -1,0 +1,137 @@
+.border-radius0 {
+  border-radius: 0!important;
+}
+.border-radius4 {
+  border-radius: 4px!important;
+}
+.border-radius8 {
+  border-radius: 8px!important;
+}
+.border-radius100 {
+  border-radius: 100%!important;
+}
+
+.bold {
+  font-weight: bold;
+}
+.normal {
+  font-weight: normal;
+}
+
+.center-block {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clearfix::after {
+  content: '';
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  display: block;
+}
+.hide {
+  display: none!important;
+}
+.visisble {
+  visibility: visible;
+}
+.invisible, .hidden {
+  visibility: hidden;
+}
+.inline-block {
+  display: inline-block;
+}
+.inline {
+  display: inline;
+}
+.block, .show {
+  display: block!important;
+}
+
+
+.height-auto {
+  height: auto;
+}
+.height-34 {
+  height: 34px;
+}
+.no-border {
+  border: none;
+}
+
+.opacity0 {
+  opacity: 0;
+}
+.opacity-50 {
+	opacity: 0.5;
+}
+.opacity-1 {
+	opacity: 1;
+}
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.fixed {
+  position: fixed;
+}
+.file {
+  position: relative;
+  display: inline-block;
+  background: #ccc;
+  border: 1px solid #333;
+  padding: 4px 20px;
+  overflow: hidden;
+  text-decoration: none;
+  text-indent: 0;
+  line-height: 20px;
+  border-radius: 20px;
+  color: #333;
+  font-size: 13px;
+}
+.file input[type="file"] {
+	position: absolute;
+	font-size: 100px;
+	right: 0;
+	top: 0;
+	opacity: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.table {
+  width: 100%;
+  max-width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  background-color: transparent;
+}
+.table th, .table td {
+	height: 34px;
+	border: 1px solid #dfdfdf;
+	padding: 5px;
+	text-align: left;
+}
+.table tr:hover td {
+	background: #eef1f6;
+}
+.table thead {
+	background: #eef1f6;
+}

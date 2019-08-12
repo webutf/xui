@@ -1,0 +1,141 @@
+<!doctype html> <html> <head> <meta charset=UTF-8> <title>XUI框架</title> <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"/> <meta name=keywords content=XUI框架 /> <meta name=description content=XUI框架 /> <meta name=renderer content=webkit> <meta name=viewport content="width=device-width,initial-scale=1,user-scalable=no"/> <link rel="shortcut icon" href=../assets/favicon.ico> <link href="../css/views/multiSelect.6e81be59.css?c2811d67a4f463050f7a" rel="stylesheet"></head> <body> <h2 class="font-size24 color-blue mb-20">multiSelect 多选</h2> <button class="multi-select btn btn-default width-200"></button> <pre>
+      &lt;button class="multi-select btn btn-default"&gt;&lt;/button&gt;
+
+      xui.multiSelect({
+        el: $multiSelect.find('button'),
+        arr: [1,3],
+        data: [
+          { key: 1, value: '黄金糕'},
+          { key: 2, value: '狮子头'},
+          { key: 3, value: '大闸蟹'},
+          { key: 4, value: '双皮奶'},
+          { key: 5, value: '啤酒鸭'},
+          { key: 6, value: '啤鸭'},
+          { key: 7, value: '大龙虾'}
+        ],
+        valid(arr) {
+          if (arr.length >= 3) {
+            xui.toast('最多选择3个', 'warning')
+            return false
+          }
+        },
+        callback(key, value) {
+          console.log(key, value)
+        }
+      })
+		</pre> <pre>
+      .multi-select-box {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+      }
+      .multi-select-box .multi-select {
+        cursor: pointer;
+        background: #fff;
+        width: 200px;
+        text-align: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .multi-select-box .multi-select-ul {
+        position: absolute;
+        left: 0;
+        top: 37px;
+        max-height: 200px;
+        overflow-y: auto;
+        cursor: pointer;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 250px;
+        display: none;
+        padding: 10px 0;
+      }
+      .multi-select-box .multi-select-ul li {
+        line-height: 30px;
+        position: relative;
+        padding: 0 22px 0 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .multi-select-box .multi-select-ul li i {
+        float: right;
+        font-size: 18px;
+        position: absolute;
+        top: 0;
+        right: 10px;
+        color: #ccc;
+      }
+      .multi-select-box .multi-select-ul li .active {
+        color: #0ae;
+      }
+      .multi-select-box .multi-select-ul li:hover {
+        background: #d9edf7;
+      }
+		</pre> <pre>
+      function multiSelect(obj = {}) {
+        var el = obj.el
+        if (!el) return
+        if (!el.parent().hasClass('multi-select-box')) {
+          el.wrap('&lt;div class="multi-select-box"&gt;&lt;/div&gt;')
+        }
+        if (el.parent().find('ul').length == 0) {
+          el.after('&lt;ul class="multi-select-ul"&gt;&lt;/ul&gt;')
+        }
+
+        var key = el.data('key') ? el.data('key').split(',') : obj.arr || []
+        var value = el.data('value') ? el.data('value').split(',') : []
+        var arr = obj.data || []
+        var initArr = obj.arr || []
+        var str = ''
+
+        arr.forEach(val =&gt; {
+          if (initArr.indexOf(val.key) &gt; -1) {
+            value.push(val.value)
+            str += `&lt;li data-key="${val.key}" data-value="${val.value}"&gt;${val.value}
+              &lt;i class="iconfont active x-select"&gt;&lt;/i&gt;&lt;/li&gt;`
+          } else {
+            str += `&lt;li data-key="${val.key}" data-value="${val.value}"&gt;${val.value}
+              &lt;i class="iconfont x-select"&gt;&lt;/i&gt;&lt;/li&gt;`
+          }
+        })
+        el.next().html(str)
+        el.attr('data-key', key.join(','))
+        el.attr('data-value', value.join(','))
+        el.text(value.join(','))
+
+        el.off('click').on('click', function(e) {
+          e.stopPropagation()
+          el.next().toggle()
+        })
+
+        el.next().off('click').on('click', 'li', function(e) {
+          e.stopPropagation()
+          var index = key.indexOf($(this).data('key'))
+          if (index &gt; - 1) {
+            key.splice(index, 1)
+            value.splice(index, 1)
+            $(this).find('i').removeClass('active')
+          } else {
+            var lock = true
+            if (obj.valid) {
+              lock = obj.valid(key) !== false
+            }
+            if (!lock) return
+            key.push($(this).data('key'))
+            value.push($(this).data('value'))
+            $(this).find('i').addClass('active')
+          }
+          el.attr('data-key', key.join(','))
+          el.attr('data-value', value.join(','))
+          el.text(value.join(','))
+          obj.callback && obj.callback(key, value)
+        })
+
+        $(document).on('click', function() {
+          el.next().hide()
+        })
+      }
+		</pre> <script src=https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js></script> <script type="text/javascript" src="../js/views/multiSelect.c2811d67.js?c2811d67a4f463050f7a"></script></body> </html> 

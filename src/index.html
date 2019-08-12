@@ -1,45 +1,66 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-		<title>移动端UI框架XUI</title>
+	<head>
+		<meta charset="UTF-8">
+		<title>UI模块</title>
 		<meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
-		<meta name="keywords" content="前端年代_移动端UI框架_移动端UI组件" />
-		<meta name="description" content="一款适合移动端布局的UI界面框架,追求美观,高效以及良好的用户体验" />
-		<meta http-equiv="Access-Control-Allow-Origin" content="*">
+		<meta name="keywords" content="UI模块" />
+		<meta name="description" content="UI模块" />
 		<meta name="renderer" content="webkit">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-		<link href="http://webnian.com/image/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-    <link rel="stylesheet" href="./assets/index.min.css" type="text/css">
-    <style media="screen">
-      a {
-        display: block;
+    <link rel="shortcut icon" href="./assets/favicon.ico">
+    <style>
+      #loading {
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        position: fixed;
+        left: 50%;
+        top: 36%;
+        margin-left: -50px;
+        z-index: 999999;
       }
     </style>
-  </head>
+	</head>
+	<body>
+		<div id="sidebar">
+			<h3>
+				<a href="http://webutf.com" title="webutf.com" alt=""></a>
+			</h3>
+			<ul>
+				<li data-id="guide">开发指南</li>
+				<li data-id="reset">reset 样式初始化</li>
+				<li data-id="basic">基础样式</li>
+				<li data-id="fontSize">fontsize 大小颜色</li>
+				<li data-id="background">background</li>
+				<li data-id="cursor">cursor 鼠标样式</li>
+				<li data-id="text">text 文本样式</li>
+				<li data-id="width-height">width - height</li>
+				<li data-id="padding-margin">padding - margin</li>
+				<li data-id="iconfont">iconfont</li>
+				<li data-id="button">button</li>
+				<li data-id="radio-checkbox">radio - checkbox</li>
+				<li data-id="input">input</li>
+				<li data-id="pagination">pagination 分页</li>
+				<li data-id="toast">toast 消息提示</li>
+				<li data-id="alert">alert 消息提示</li>
+				<li data-id="confirm">confirm 弹框</li>
+				<li data-id="prompt">prompt 输入</li>
+				<li data-id="tabs">tabs 标签页</li>
+				<li data-id="switch">switch 开关</li>
+				<li data-id="dropdown">dropdown下拉菜单</li>
+				<li data-id="tooltip">tooltip 文字提示</li>
+				<li data-id="multiSelect">multiSelect 多选</li>
+				<li data-id="dialog">dialog 对话框</li>
+			</ul>
+		</div>
 
-  <body>
-    <header class="x-header">
-      <h1>XUI</h1>
-    </header>
+		<div id="section-box">
+			<iframe src="" width="100%" height="100%" frameborder="0"></iframe>
+		</div>
+    
+    <img id="loading" alt="" title="" src="./assets/loading.gif" />
 
-    <div id="pages" class="page-warp">
-      <div id="page">
-        <h1 class="margin10">一个基于zepto的移动端UI框架</h1>
-
-        <ul class="x-line x-line-right">
-          <li><a href="./html/btn.html">按钮组件</a></li>
-          <li><a href="./html/header.html">头部组件</a></li>
-          <li><a href="./html/nav.html">导航栏</a></li>
-          <li><a href="./html/line.html">列表</a></li>
-          <li><a href="./html/actionsheet.html">actionsheet</a></li>
-          <li><a href="./html/cell.html">栅格系统</a></li>
-          <li><a href="./html/picker.html">picker</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
-    <script src="./assets/index.min.js"></script>
-  </body>
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	</body>
 </html>

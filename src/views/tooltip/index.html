@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>XUI框架</title>
+		<meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+		<meta name="keywords" content="XUI框架" />
+		<meta name="description" content="XUI框架" />
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+		<link rel="shortcut icon" href="../assets/favicon.ico">
+	</head>
+	<body>
+		<h2 class="font-size24 color-blue mb-20">tooltip 文字提示</h2>
+		<span class="tooltip" data-title="88888888">Tooltip 88888888</span>
+		<button class="tooltip btn btn-default"
+			data-title="Hover over the links below to see tooltips:">Tooltips</button>
+
+		<pre>
+      &lt;span class="tooltip" data-title="88888888"&gt;Tooltip 88888888&lt;/span&gt;
+		</pre>
+
+		<pre>
+      .tooltip {
+        cursor: default;
+      }
+      .tooltip-box {
+        background: #444;
+        color: #fff;
+        font-size: 14px;
+        max-width: 250px;
+        padding: 3px 5px;
+        position: absolute;
+        top: -300px;
+        left: -9999px;
+        z-index: 2000;
+        border-radius: 4px;
+        display: none;
+        word-wrap: break-word;
+      }
+		</pre>
+
+		<pre>
+      var tooltip = ''
+      $(document).find('.tooltip').hover(function(e) {
+        var el = $(this)
+        var title = el.data('title') || ''
+        if (!title) return
+        if (tooltip) {
+          tooltip.text(title).fadeIn(300)
+        } else {
+          tooltip = $('<div class="tooltip-box">'+ title +'</div>').appendTo('body').fadeIn(300)
+        }
+        el.mousemove(function(e) {
+          tooltip.css({ top: e.pageY + 8, left: e.pageX + 15 })
+        })
+      }, function() {
+        tooltip && tooltip.hide()
+      })
+		</pre>
+
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	</body>
+</html>

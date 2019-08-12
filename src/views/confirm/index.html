@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>XUI框架</title>
+		<meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+		<meta name="keywords" content="XUI框架" />
+		<meta name="description" content="XUI框架" />
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+		<link rel="shortcut icon" href="../assets/favicon.ico">
+	</head>
+	<body>
+		<h2 class="font-size24 color-blue mb-20">confirm 弹框</h2>
+		<p class="mb-20">最简单使用方法: xui.confirm('这个是测试confirm', '提示')</p>
+		<button class="btn btn-primary mr-20">confirm</button>
+		<button class="btn btn-warning mr-20">confirm操作</button>
+
+		<pre>
+      xui.confirm('这个是测试confirm', '提示', {
+        showCancelButton: false,		//是否显示取消按钮
+        cancelButtonText: '取消',		//取消按钮文本
+        confirmButtonText: '确定', 	//确定按钮的文本
+        cancelButtonClass: '',			//取消按钮的自定义类名
+        confirmButtonClass: '',			//确定按钮的自定义类名
+        closeOnClickModal: true,		//是否可通过点击遮罩关闭弹框
+        callback(n) {
+          xui.toast(n == 1 ? '点击了确定': '点击了取消')
+        }
+      })
+		</pre>
+
+		<pre>
+       代码见 alert  
+		</pre>
+
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	</body>
+</html>

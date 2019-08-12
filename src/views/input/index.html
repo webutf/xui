@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>XUI框架</title>
+		<meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
+		<meta name="keywords" content="XUI框架" />
+		<meta name="description" content="XUI框架" />
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+		<link rel="shortcut icon" href="../assets/favicon.ico">
+	</head>
+	<body>
+		<h2 class="font-size24 color-blue mb-20">input 输入框选择框</h2>
+		<p>class="positiveNumber" 则输入框只能输入数字 <span class="color-0ae">(正数)</span></p>
+		<p>class="number" 则输入框只能输入数字 <span class="color-0ae">(正数负数)</span></p>
+		<p>class="numberDot" 则输入框能输入<span class="color-0ae">数字及小数点</span></p>
+		<div>
+			<input type="text" disabled/>
+			<input type="text" placeholder="普通文本框"/>
+			<input type="text" class="positiveNumber" placeholder="positiveNumber"/>
+			<input type="text" class="number" placeholder="number"/>
+			<input type="text" class="numberDot" placeholder="numberDot"/>
+			<select>
+				<option value="123">123</option>
+				<option value="456">456</option>
+			</select>
+			<select disabled>
+				<option value="123">123</option>
+				<option value="456">456</option>
+			</select>
+		</div>
+		<textarea class="width-300" style="height:100px;"></textarea>
+
+		<pre>
+      $(document).on('input', '.positiveNumber', function() {
+        var value = $(this).val().replace(/\D/ig, '').trim()
+        $(this).val(value)
+      })
+
+      $(document).on('input', '.number', function() {
+        var value = $(this).val().replace(/[^0123456789-]/ig, '').trim()
+        var index = value.indexOf('-')
+        if (index > -1) {
+          value = index == 0 ? '-' + value.replace(/\D/ig, '') : value.replace(/\D/ig, '')
+        }
+        $(this).val(value)
+      })
+
+      $(document).on('input', '.numberDot', function() {
+        var value = $(this).val().replace(/[^-0123456789.]/ig, '').trim()
+        if (value.indexOf('.') != value.lastIndexOf('.')) {
+          value = value.substring(0, value.lastIndexOf('.'))
+        }
+        var index = value.indexOf('-')
+        var reg = /[^0123456789.]/ig
+        if (index > -1) {
+          value = index == 0 ? '-' + value.replace(reg, '') : value.replace(reg, '')
+        }
+        $(this).val(value)
+      })
+		</pre>
+
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	</body>
+</html>

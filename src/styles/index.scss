@@ -1,0 +1,43 @@
+@import "./xui.scss";
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+#sidebar {
+	width: 260px;
+	height: 100%;
+	float: left;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99999;
+	overflow-y: scroll;
+  background: #f5f9fc;
+  padding-bottom: 40px;
+	h3 {
+		height: 60px;
+		a {
+			display: block;
+			height: 100%;
+   		background: #efefef url('../assets/logo.png') no-repeat 15px 7px;
+		}
+	}
+	li {
+    cursor: pointer;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px 0 20px;
+    &:hover {
+      color: #000;
+    }
+  }
+  .active, .active:hover {
+    color: #008cff;
+  }
+}
+#section-box {
+  width: 100%;
+	height: 100%;
+	padding-left: 260px;
+  overflow: hidden;
+}

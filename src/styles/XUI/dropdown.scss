@@ -1,0 +1,31 @@
+.dropdown {
+  cursor: pointer;
+  position: relative;
+}
+.dropdown span {
+	color: #0ae;
+}
+.dropdown ul {
+	width: 180px;
+	max-height: 130px;
+	position: absolute;
+	left: 0;
+	top: 31px;
+	border: 1px solid #dfdfdf;
+	overflow-y: auto;
+	border-radius: 4px;
+	background: #fff;
+	padding: 10px 0;
+	z-index: 999;
+	display: none;
+	box-shadow: 0 4px 8px rgba(0,0,0,.175);
+}
+.dropdown ul li {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 0 10px 0 15px;
+}
+.dropdown ul li:hover {
+	background: #d9edf7;
+}

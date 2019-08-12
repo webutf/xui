@@ -1,0 +1,32 @@
+@import "../../styles/xui.scss";
+body {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 40px 40px;
+}
+li {
+  width: 100px;
+  height: 100px;
+  float: left;
+  text-align: center;
+  padding: 10px 3px 3px;
+  border-radius: 4px;
+  transition: background-color 200ms ease-out 0s;
+  p {
+    margin-top: 8px;
+    word-wrap: break-word;
+    font-size: 14px;
+  }
+  .iconfont {
+    font-size: 32px;
+    display:inline-block;
+    color: #0ae;
+    transition: transform 250ms ease-out 0s;
+  }
+  &:hover {
+    background: #d9edf7;
+    .iconfont {
+      transform: scale(1.3);
+    }
+  }
+}

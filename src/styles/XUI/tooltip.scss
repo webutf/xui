@@ -1,0 +1,17 @@
+.tooltip {
+  cursor: default;
+}
+.tooltip-box {
+  background: #444;
+  color: #fff;
+  font-size: 14px;
+  max-width: 250px;
+  padding: 3px 5px;
+  position: absolute;
+  top: -300px;
+  left: -9999px;
+  z-index: 2000;
+  border-radius: 4px;
+  display: none;
+  word-wrap: break-word;
+}
