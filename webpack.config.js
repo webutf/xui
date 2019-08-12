@@ -38,7 +38,7 @@ let entry = (function() {
 const webpackConfig = {
 	entry: entry.entries,
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'docs'),
     filename: 'js/[name].[hash:8].js',
     chunkFilename: 'js/[name].[hash:8].js'
 	},
@@ -178,7 +178,7 @@ const webpackConfig = {
   },
   devtool: devMode ? 'cheap-source-map' : 'source-map',
   devServer: {
-    contentBase: path.join(__dirname, '/dist'),
+    contentBase: path.join(__dirname, '/docs'),
     compress: true,
     noInfo: true,
     inline: true,
