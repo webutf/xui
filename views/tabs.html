@@ -1,0 +1,42 @@
+<!doctype html> <html> <head> <meta charset=UTF-8> <title>XUI框架</title> <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"/> <meta name=keywords content=XUI框架 /> <meta name=description content=XUI框架 /> <meta name=renderer content=webkit> <meta name=viewport content="width=device-width,initial-scale=1,user-scalable=no"/> <link rel="shortcut icon" href=../assets/favicon.ico> <link href="../css/views/tabs.0bf23fff.css?d42e8dfffb586b553b03" rel="stylesheet"></head> <body> <h2 class="font-size24 color-blue mb-20">tabs 标签页</h2> <div class=tabs> <ul class=nav-tabs> <li class="active nav-pane">用户管理</li> <li class=nav-pane>配置管理</li> </ul> <ul class=tab-content> <li class="active tab-pane">这个是用户管理的内容</li> <li class=tab-pane>这个是配置管理的内容</li> </ul> </div> <pre>
+      &lt;div class="tabs"&gt;
+        &lt;ul class="nav-tabs"&gt;
+          &lt;li class="active nav-pane">home&lt;/li&gt;
+          &lt;li class="nav-pane"&gt;profile&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;ul class="tab-content"&gt;
+          &lt;li class="active tab-pane"&gt;这个是home的内容&lt;/li&gt;
+          &lt;li class="tab-pane"&gt;这个是profile的内容&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+		</pre> <pre>
+      .tabs .nav-tabs {
+        overflow: hidden;
+        height: 34px;
+        line-height: 32px;
+      }
+      .tabs .nav-tabs > li, .tabs .nav-tabs > div {
+        float: left;
+        padding: 0 12px;
+        cursor: pointer;
+        transition: color 200ms;
+      }
+      .tabs .nav-tabs .active {
+        color: #0ae;
+        border-bottom: 2px solid #0ae;
+      }
+      .tabs .tab-content > li, .tabs .tab-content > div {
+        display: none;
+        padding: 15px 0;
+      }
+      .tabs .tab-content .active {
+        display: block;
+      }
+		</pre> <pre>
+        $(document).find('.nav-tabs').on('click', '.nav-pane', function() {
+          var index = $(this).index()
+          $(this).addClass('active').siblings().removeClass('active')
+          var parent = $(this).parent().parent()
+          parent.children('.tab-content').children('.tab-pane').eq(index).show().siblings().hide()
+        })
+		</pre> <script src=https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js></script> <script type="text/javascript" src="../js/views/tabs.7fc90cd3.js?d42e8dfffb586b553b03"></script></body> </html> 

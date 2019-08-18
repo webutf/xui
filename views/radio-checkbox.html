@@ -1,0 +1,51 @@
+<!doctype html> <html> <head> <meta charset=UTF-8> <title>XUI框架</title> <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"/> <meta name=keywords content=XUI框架 /> <meta name=description content=XUI框架 /> <meta name=renderer content=webkit> <meta name=viewport content="width=device-width,initial-scale=1,user-scalable=no"/> <link rel="shortcut icon" href=../assets/favicon.ico> <link href="../css/views/radio-checkbox.8418548f.css?d42e8dfffb586b553b03" rel="stylesheet"></head> <body> <h2 class="font-size24 color-blue mb-20">radio - checkbox 单选复选框</h2> <input type=radio class=xui-radio name=sex disabled=disabled /> <input type=radio class=xui-radio name=sex /> <input type=radio class=xui-radio name=sex /> <input type=radio class=xui-radio name=sex checked=checked /> <label> <input type=radio class=xui-radio name=sex /> <span style=vertical-align:middle>点击选中最后一个</span> </label> <pre>
+      &lt;input type="radio" class="xui-radio" name="sex" disabled/&gt;
+      &lt;input type="radio" class="xui-radio" name="sex"/&gt;
+      &lt;input type="radio" class="xui-radio" name="sex"/&gt;
+      &lt;input type="radio" class="xui-radio" name="sex" checked/&gt;
+      &lt;label&gt;
+        &lt;input type="radio" class="xui-radio" name="sex"/&gt;
+        &lt;span style="vertical-align:middle"&gt;点击选中最后一个&lt;/span&gt;
+      &lt;/label&gt;
+		</pre> <div class=checkbox> <input type=checkbox class=xui-checkbox name=sex disabled=disabled /> <input type=checkbox class=xui-checkbox name=sex /> <input type=checkbox class=xui-checkbox name=sex /> <input type=checkbox class=xui-checkbox name=sex checked=checked /> <label> <input type=checkbox class=xui-checkbox name=sex /> <span style=vertical-align:middle>点击选中最后一个</span> </label> </div> <pre>
+      &lt;input type="checkbox" class="xui-checkbox" name="sex" disabled/&gt;
+      &lt;input type="checkbox" class="xui-checkbox" name="sex"/&gt;
+      &lt;input type="checkbox" class="xui-checkbox" name="sex"/&gt;
+      &lt;input type="checkbox" class="xui-checkbox" name="sex" checked/&gt;
+      &lt;label&gt;
+        &lt;input type="checkbox" class="xui-checkbox" name="sex"/&gt;
+        &lt;span style="vertical-align:middle"&gt;点击选中最后一个&lt;/span&gt;
+      &lt;/label&gt;
+    </pre> <pre>
+      .xui-radio, .xui-checkbox {
+        width: 24px;
+        height: 24px;
+        font-size: 24px;
+        margin: 0;
+        -webkit-appearance: none;
+        font-family:"iconfont" !important;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #0ae;
+        outline: none;
+        cursor: pointer;
+        vertical-align: middle;
+        display: inline-block;
+      }
+      .xui-radio:before {
+        content: "\E72F";
+      }
+      .xui-radio:checked:before {
+        content: "\E71E";
+      }
+      .xui-radio:disabled, .xui-checkbox:disabled {
+        cursor: not-allowed;
+      }
+      .xui-checkbox:before {
+        content: "\E720";
+      }
+      .xui-checkbox:checked:before {
+        content: "\E721";
+      }
+
+		</pre> <script src=https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js></script> <script type="text/javascript" src="../js/views/radio-checkbox.ae85ffdb.js?d42e8dfffb586b553b03"></script></body> </html> 

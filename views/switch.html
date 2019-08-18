@@ -1,0 +1,46 @@
+<!doctype html> <html> <head> <meta charset=UTF-8> <title>XUI框架</title> <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"/> <meta name=keywords content=XUI框架 /> <meta name=description content=XUI框架 /> <meta name=renderer content=webkit> <meta name=viewport content="width=device-width,initial-scale=1,user-scalable=no"/> <link rel="shortcut icon" href=../assets/favicon.ico> <link href="../css/views/switch.cf635e83.css?d42e8dfffb586b553b03" rel="stylesheet"></head> <body> <h2 class="font-size24 color-blue mb-20">switch 开关</h2> <input type=checkbox class=xui-switch /> <pre>
+      &lt;input type="checkbox" class="xui-switch" /&gt;	
+		</pre> <pre>
+    .xui-switch {
+      position: relative;
+      z-index: 10;
+      display: block;
+      width: 58px;
+      height: 32px;
+      left: 0;
+      border: 1px solid #d9d9d9;
+      border-radius: 16px;
+      -webkit-appearance: none;
+    }
+    .xui-switch:before, .xui-switch:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 30px;
+      border-radius: 15px;
+      transition: transform .3s;
+    }
+    .xui-switch:before {
+      width: 56px;
+      background-color: #FDFDFD;
+    }
+    .xui-switch:after {
+      width: 30px;
+      background-color: #FFF;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+    }
+    .xui-switch:checked {
+      border-color: #26a2ff;
+      background-color: #26a2ff;
+    }
+    .xui-switch:checked:before {
+      transform: scale(0);
+    }
+    .xui-switch:checked:after {
+      transform: translateX(26px);
+    }
+    .xui-switch[disabled] {
+      opacity: 0.5;
+    }
+		</pre> <script type="text/javascript" src="../js/views/switch.43a0a2ef.js?d42e8dfffb586b553b03"></script></body> </html>

@@ -1,0 +1,261 @@
+<!doctype html> <html> <head> <meta charset=UTF-8> <title>XUI框架</title> <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"/> <meta name=keywords content=XUI框架 /> <meta name=description content=XUI框架 /> <meta name=renderer content=webkit> <meta name=viewport content="width=device-width,initial-scale=1,user-scalable=no"/> <link rel="shortcut icon" href=../assets/favicon.ico> <link href="../css/views/pagination.4952704d.css?d42e8dfffb586b553b03" rel="stylesheet"></head> <body> <h2 class="font-size24 color-blue mb-20">pagination 分页</h2> <pre>
+      $('.box').pagination({
+        total: 25,
+        pageIndex: 2,
+        onPageClick: function(n, m) {
+        console.log(n, m)
+        }
+      })
+		</pre> <div class="box mb-20"></div> <pre>
+      .pagination {
+        height: 34px;
+        line-height: 34px;
+        overflow: hidden;
+      }
+      .pagination li {
+        float: left;
+      }
+      .pagination button, .pagination input {
+        display: inline-block;
+        height: 100%;
+        vertical-align: top;
+        box-sizing: border-box;
+        border-radius: 3px;
+      }
+      .pagination button {
+        background: #fff;
+        outline: none;
+        border: 1px solid #dfdfdf;
+        padding: 0 12px;
+        cursor: pointer;
+        margin-right: 5px;
+      }
+      .pagination .disabled:hover {
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+      .pagination input {
+        width: 60px;
+        outline: none;
+        padding: 0 5px;
+        border: 1px solid #dfdfdf;
+      }
+      .pagination .active {
+        background: #0ae;
+        color: #fff;
+      }
+    </pre> <pre>
+      (function ($, window, document, undefined) {
+        function Pagination(el, options) {
+          this.$el = $(el);
+          this.options = $.extend({}, $.fn.pagination.defaults, options);
+          if (this.options.pageIndex &lt; 1) this.options.pageIndex = 1;
+          if (this.options.pageIndex &gt; this.options.total) this.options.pageIndex = this.options.total;
+          this.options.total = parseInt(this.options.total);
+          this.options.visiblePages = parseInt(this.options.visiblePages);
+
+          if (this.options.beforeClick instanceof Function) {
+            this.$el.first().on('beforeClick', this.options.beforeClick);
+          }
+
+          if (this.options.onPageClick instanceof Function) {
+            this.$el.first().on('onPageClick', this.options.onPageClick);
+          }
+
+          if (this.options.total == 1) return this;
+
+          this.$el.addClass(this.options.paginationClass);
+          this.show(this.options.pageIndex);
+          this.setupEvents();
+          return this;
+        };
+
+        Pagination.prototype = {
+          constructor: Pagination,
+          destroy: function () {
+            this.$el.empty();
+            this.$el.removeData('pagination');
+            this.$el.off('onPageClick');
+            return this;
+          },
+
+          show: function (page) {
+            page = parseInt(page);
+            if (page &lt; 1) page = 1;
+            if (page &gt; this.options.total) page = this.options.total;
+            this.pageIndex = page;
+            this.$el.trigger('beforeClick', page);
+
+            var pages = this.getPages(page);
+            this.render(pages);
+
+            this.$el.trigger('onPageClick', page);
+          },
+
+          enable: function () {
+            this.show(this.pageIndex);
+          },
+
+          disable: function () {
+            this.$el.off('click').on('click', 'button', function (evt) {
+              evt.preventDefault();
+            });
+            this.$el.children().each(function () {
+              var $this = $(this);
+              if (!$this.hasClass('active')) $this.addClass('disabled');
+            });
+          },
+
+          buildListItems: function (pages) {
+            var listItems = [];
+
+            if (this.options.first) {
+              listItems.push(this.buildItem('first', 1));
+            }
+
+            if (this.options.prev) {
+              var prev = pages.pageIndex > 1 ? pages.pageIndex - 1 : 1;
+              listItems.push(this.buildItem('prev', prev));
+            }
+
+            for (var i = 0; i &lt; pages.numeric.length; i++) {
+              listItems.push(this.buildItem('page', pages.numeric[i]));
+            }
+
+            if (this.options.next) {
+              var next = pages.pageIndex &lt; this.options.total ? pages.pageIndex + 1 : this.options.total;
+              listItems.push(this.buildItem('next', next));
+            }
+
+            if (this.options.last) {
+              listItems.push(this.buildItem('last', this.options.total));
+            }
+
+            if (this.options.jump) {
+              listItems.push('前往 &lt;input type="text" maxlength="9"/> 页')
+            }
+            return listItems;
+          },
+
+          buildItem: function (type, page) {
+            var $itemContainer = $('&lt;button>&lt;/button>'), itemText = this.options[type] || page;
+            $itemContainer.data('page', page);
+            $itemContainer.data('page-type', type);
+            $itemContainer.append(itemText);
+            return $itemContainer;
+          },
+
+          getPages: function (pageIndex) {
+            var half = Math.floor(this.options.visiblePages / 2);
+            var start = pageIndex - half + 1 - this.options.visiblePages % 2;
+            var end = pageIndex + half;
+
+            var visiblePages = this.options.visiblePages;
+            if (visiblePages > this.options.total) {
+              visiblePages = this.options.total;
+            }
+            if (start &lt;= 0) {
+              start = 1;
+              end = visiblePages;
+            }
+            if (end > this.options.total) {
+              start = this.options.total - visiblePages + 1;
+              end = this.options.total;
+            }
+
+            var pages = [];
+            var itPage = start;
+            while (itPage &lt;= end) {
+              pages.push(itPage);
+              itPage++;
+            }
+
+            return { "pageIndex": pageIndex, "numeric": pages };
+          },
+
+          render: function (pages) {
+            var that = this;
+            this.$el.html('');
+            var items = this.buildListItems(pages);
+            $.each(items, function (key, item) {
+              that.$el.append(item);
+            });
+
+            this.$el.children().each(function () {
+              var $this = $(this), pageType = $this.data('page-type');
+
+              switch (pageType) {
+                case 'page':
+                  if ($this.data('page') === pages.pageIndex) {
+                    $this.addClass('active');
+                  }
+                  break;
+                case 'first':
+                  $this.toggleClass('disabled', pages.pageIndex === 1);
+                  break;
+                case 'last':
+                  $this.toggleClass('disabled', pages.pageIndex === that.options.total);
+                  break;
+                case 'prev':
+                  $this.toggleClass('disabled', pages.pageIndex === 1);
+                  break;
+                case 'next':
+                  $this.toggleClass('disabled', pages.pageIndex === that.options.total);
+                  break;
+                default:
+                  break;
+              }
+            })
+          },
+
+          setupEvents: function () {
+            var that = this;
+            this.$el.off('click').on('click', 'button', function (e) {
+              var $this = $(this);
+              if ($this.hasClass('disabled') || $this.hasClass('active')) {
+                return false;
+              }
+              e.preventDefault();
+              that.show(parseInt($this.data('page')));
+            });
+            this.$el.off('input').on('input', 'input', function(e) {
+              e.target.value = e.target.value.replace(/\D/g, '');
+            })
+
+            this.$el.off('keydown').on('keydown', 'input', function (e) {
+              if (e.keyCode == 13) that.show(e.target.value - 0);
+            })
+          },
+
+          changetotal: function (total, pageIndex) {
+            this.options.total = total;
+            pageIndex && this.show(pageIndex);
+          },
+
+          getCurrentPage: function () {
+            return this.pageIndex;
+          }
+        };
+
+        $.fn.pagination = function (options) {
+          var $this = $(this);
+          var data = $this.data('pagination');
+          if (!data) $this.data('pagination', (data = new Pagination(this, options)));
+          return $this;
+        };
+
+        $.fn.pagination.defaults = {
+          total: 1,
+          pageIndex: 1,
+          visiblePages: 5,
+          first: '&lt;',
+          prev: '上一页',
+          next: '下一页',
+          last: '>',
+          jump: true,
+          beforeClick: null,
+          onPageClick: null,
+          paginationClass: 'pagination'
+        };
+      })($, window, document);
+    </pre> <script src=https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js></script> <script type="text/javascript" src="../js/views/pagination.aaf838f6.js?d42e8dfffb586b553b03"></script></body> </html> 
